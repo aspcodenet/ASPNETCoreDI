@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ASPNETCoreDI.Data;
 using ASPNETCoreDI.Pages;
+using ASPNETCoreDI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASPNETCoreDI
@@ -29,6 +30,7 @@ namespace ASPNETCoreDI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddTransient<ILotteryService, LotteryService>();
 
             services.AddRazorPages();
         }
